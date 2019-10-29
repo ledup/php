@@ -1,24 +1,26 @@
-version: '2'
 services:
   nginx:
     container_name: test-ledup-nginx
+    environment:
+      LED_DOCROOT: public
+      LED_PHPFPM_SOCKET: php:9000
+      LED_VHOSTS: test.localhost
+    extends:
+      file: ~/.led/docker-base.yaml
+      service: localuser
     hostname: nginx
     image: ledup/nginx:stable
     volumes:
-      - .:/src
-    environment:
-      LED_DOCROOT: public
-      LED_VHOSTS: test.localhost
-      LED_PHPFPM_SOCKET: php:9000
-    extends:
-        file: ~/.led/docker-base.yaml
-        service: localuser
+    - .:/src
   php:
     container_name: test-ledup-php
-    hostname: php
-    image: ledup/php:5.3
-    volumes:
-      - .:/src
+    environment:
+      PHP_XDEBUG: 1
     extends:
-        file: ~/.led/docker-base.yaml
-        service: localuser
+      file: ~/.led/docker-base.yaml
+      service: localuser
+    hostname: php
+    image: ledup/php:7.3
+    volumes:
+    - .:/src
+version: '2'

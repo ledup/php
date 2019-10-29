@@ -39,7 +39,7 @@ ssh2
 XDebug
 ```
 
-XDebug is disabled by default. Set an environment variable `PHP_XDEBUG` is setted to 1
+XDebug is disabled by default. Set an environment variable `PHP_XDEBUG` setted to 1
 
 ## Usage
 
