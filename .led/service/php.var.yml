@@ -1,0 +1,8 @@
+vars:
+  - VERSION
+data:
+  VERSION:
+    title: PHP version required
+    default: 7.3
+    type: list
+    items: 5.6 7.0 7.1 7.2 7.3 7.4

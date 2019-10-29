@@ -1,0 +1,4 @@
+    image: ledup/php:{{VERSION}}
+    volumes:
+      - .:/src
+    working_dir: /src
