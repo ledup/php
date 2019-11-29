@@ -6,7 +6,7 @@ RUN yum clean metadata \
     && yum install -y yum-utils \
     && yum install -y http://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \
-    && yum-config-manager --enable prestaconcept-php74-test \
+    && yum-config-manager --enable prestaconcept-php74 \
     && yum -y install \
     php \
     php-bcmath \
@@ -16,6 +16,7 @@ RUN yum clean metadata \
     php-dbg \
     php-enchant \
     php-fpm \
+    php-ffi \
     php-gd \
     php-gettext \
     php-gmp \
@@ -43,25 +44,24 @@ RUN yum clean metadata \
     php-xmlrpc \
     php-zip
 
-#RUN yum -y install php-pecl-xdebug
 # for now install fail with epel repo enabled
 RUN yum -y install --disablerepo=epel \
-#    php-pecl-amqp \
-#    php-pecl-ast \
+    php-pecl-amqp \
+    php-pecl-ast \
     php-pecl-apcu \
-#    php-pecl-http \
-#    php-pecl-imagick \
-#    php-pecl-lz4 \
-#    php-pecl-memcached \
-#    php-pecl-mongodb \
-#    php-pecl-redis \
-#    php-pecl-ssh2 \
-    php-pecl-xdebug
-#    && yum install -y php-pecl-maxminddb
+    php-pecl-http \
+    php-pecl-imagick \
+    php-pecl-lz4 \
+    php-pecl-memcached \
+    php-pecl-mongodb \
+    php-pecl-redis \
+    php-pecl-ssh2 \
+    php-pecl-xdebug \
+    && yum install -y php-pecl-maxminddb
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
-    && yum install -y composer-1.9.0 --disablerepo=epel \
+    && yum install -y composer-1.9.1 --disablerepo=epel \
     && yum clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris  /etc/localtime

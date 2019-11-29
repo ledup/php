@@ -9,9 +9,9 @@ Docker image for php-fpm made to use with led.
 | **5.6**  | PHP 5.6.40       |
 | **7.0**  | PHP 7.0.33       |
 | **7.1**  | PHP 7.1.33       |
-| **7.2**  | PHP 7.2.24       |
+| **7.2**  | PHP 7.2.25       |
 | **7.3**  | PHP 7.3.11       |
-| **7.4**  | PHP 7.4.0~RC6    |
+| **7.4**  | PHP 7.4.0 GA     |
 
 ## Includes
 
@@ -21,8 +21,6 @@ Docker image for php-fpm made to use with led.
 - Wkhtmltopdf 0.12.3 (prestaconcept)
 
 ### PECL
-
-**Extensions are not yet all builded for PHP 7.4.0**
 
 ```
 AMQP
