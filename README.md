@@ -15,7 +15,7 @@ Docker image for php-fpm made to use with led.
 
 ## Includes
 
-- Composer version 1.9.0 (prestaconcept)
+- Composer version 1.9.1 (prestaconcept)
 - Git 2.23.0 (prestaconcept)
 - Make 3.82
 - Wkhtmltopdf 0.12.3 (prestaconcept)

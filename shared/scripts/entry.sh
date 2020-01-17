@@ -11,11 +11,10 @@ USER_ID=${_UID:-9001}
 # Remove root password
 usermod -p "" root
 
-echo "Starting with UID : $USER_ID"
 useradd --shell /bin/bash -u $USER_ID -o -c "" -m dev
 
 # put user 'dev' into apache group, for php sessions
-gpasswd -a dev apache
+gpasswd -a dev apache >/dev/null
 
 export HOME=/home/dev
 

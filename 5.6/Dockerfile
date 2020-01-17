@@ -61,7 +61,7 @@ RUN yum -y install --disablerepo=epel \
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
-    && yum install -y composer-1.9.0 --disablerepo=epel \
+    && yum install -y composer-1.9.1 --disablerepo=epel \
     && yum clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris  /etc/localtime
