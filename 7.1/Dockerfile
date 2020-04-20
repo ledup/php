@@ -2,13 +2,16 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
+ARG PHP_VER=7.1.33
+ARG COMPOSER_VER=1.10.5
+
 RUN yum clean metadata \
     && yum install -y yum-utils \
     && yum install -y http://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \
     && yum-config-manager --enable prestaconcept-php71 \
     && yum -y install \
-    php \
+    php-${PHP_VER} \
     php-bcmath \
     php-cli \
     php-curl \
@@ -61,7 +64,7 @@ RUN yum -y install --disablerepo=epel \
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
-    && yum install -y composer-1.10.1 --disablerepo=epel \
+    && yum install -y composer-${COMPOSER_VER} --disablerepo=epel \
     && yum clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris  /etc/localtime
