@@ -2,8 +2,8 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=7.2.30
-ARG COMPOSER_VER=1.10.5
+ARG PHP_VER=7.2.31
+ARG COMPOSER_VER=1.10.6
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
@@ -57,10 +57,12 @@ RUN yum -y install --disablerepo=epel \
     php-pecl-lz4 \
     php-pecl-memcached \
     php-pecl-mongodb \
-    php-pecl-redis \
     php-pecl-ssh2 \
-    php-pecl-xdebug \
-    && yum install -y php-pecl-maxminddb
+    php-pecl-xdebug
+
+# requires EPEL
+RUN yum -y install php-pecl-maxminddb \
+                   php-pecl-redis
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \

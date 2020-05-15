@@ -3,7 +3,7 @@ FROM centos:7
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
 ARG PHP_VER=5.6.40
-ARG COMPOSER_VER=1.10.5
+ARG COMPOSER_VER=1.10.6
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
