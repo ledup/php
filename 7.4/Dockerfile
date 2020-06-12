@@ -2,8 +2,8 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=7.4.6
-ARG COMPOSER_VER=1.10.6
+ARG PHP_VER=7.4.7
+ARG COMPOSER_VER=1.10.7
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
