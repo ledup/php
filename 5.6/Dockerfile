@@ -3,7 +3,6 @@ FROM centos:7
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
 ARG PHP_VER=5.6.40
-ARG COMPOSER_VER=1.10.7
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
@@ -61,6 +60,8 @@ RUN yum -y install --disablerepo=epel \
     php-pecl-ssh2 \
     php-pecl-xdebug \
     && yum install -y php-pecl-maxminddb
+
+ARG COMPOSER_VER=1.10.8
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
