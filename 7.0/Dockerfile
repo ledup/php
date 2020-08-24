@@ -63,7 +63,7 @@ RUN yum -y install --disablerepo=epel \
 RUN yum -y install php-pecl-maxminddb \
                    php-pecl-redis
 
-ARG COMPOSER_VER=1.10.8
+ARG COMPOSER_VER=1.10.10
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
