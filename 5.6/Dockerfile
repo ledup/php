@@ -61,7 +61,7 @@ RUN yum -y install --disablerepo=epel \
     php-pecl-xdebug \
     && yum install -y php-pecl-maxminddb
 
-ARG COMPOSER_VER=1.10.10
+ARG COMPOSER_VER=1.10.13
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
