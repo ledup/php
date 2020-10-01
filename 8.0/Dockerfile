@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.0.0~beta4.20200915-4.el7.presta
+ARG PHP_VER=8.0.0~rc1.20200930-5.el7.presta
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
@@ -50,7 +50,6 @@ RUN yum -y install --disablerepo=epel php-pecl-apcu
 ## not yet compatible with php 8:
 #    php-pecl-amqp \
 #    php-pecl-ast \
-#    php-pecl-apcu \
 #    php-pecl-http \
 #    php-pecl-imagick \
 #    php-pecl-lz4 \
