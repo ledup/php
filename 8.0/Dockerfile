@@ -63,7 +63,7 @@ RUN yum -y install php-pecl-maxminddb
 ## not yet compatible with php 8:
 #                   php-pecl-redis
 
-ARG COMPOSER_VER=1.10.13
+ARG COMPOSER_VER=1.10.15
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
