@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.0.0~rc2.20201013-6.el7.presta
+ARG PHP_VER=8.0.0~rc3
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
@@ -46,7 +46,8 @@ RUN yum clean metadata \
     php-zip
 
 # for now install fail with epel repo enabled
-RUN yum -y install --disablerepo=epel php-pecl-apcu
+RUN yum -y install --disablerepo=epel php-pecl-apcu \
+    php-pecl-xdebug
 ## not yet compatible with php 8:
 #    php-pecl-amqp \
 #    php-pecl-ast \
@@ -56,14 +57,14 @@ RUN yum -y install --disablerepo=epel php-pecl-apcu
 #    php-pecl-memcached \
 #    php-pecl-mongodb \
 #    php-pecl-ssh2 \
-#    php-pecl-xdebug
+
 
 # requires EPEL
 RUN yum -y install php-pecl-maxminddb
 ## not yet compatible with php 8:
 #                   php-pecl-redis
 
-ARG COMPOSER_VER=1.10.15
+ARG COMPOSER_VER=1.10.16
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
