@@ -61,11 +61,12 @@ RUN yum -y install --disablerepo=epel \
     php-pecl-xdebug \
     && yum install -y php-pecl-maxminddb
 
-ARG COMPOSER_VER=1.10.16
+ARG COMPOSER_VER=1.10.17
+ARG COMPOSER2_VER=2.0.4
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
-    && yum install -y composer-${COMPOSER_VER} --disablerepo=epel \
+    && yum install -y composer-${COMPOSER_VER} composer2-${COMPOSER2_VER} \
     && yum clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris  /etc/localtime
