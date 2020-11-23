@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.0.0~rc4
+ARG PHP_VER=8.0.0~rc5
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
@@ -51,6 +51,7 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-lz4 \
     php-pecl-mailparse \
     php-pecl-maxminddb \
+    php-pecl-mongodb \
     php-pecl-redis \
     php-pecl-xdebug
 
@@ -58,11 +59,10 @@ RUN yum -y install php-pecl-apcu \
 #    php-pecl-amqp \
 #    php-pecl-imagick \
 #    php-pecl-memcached \
-#    php-pecl-mongodb \
 #    php-pecl-ssh2 \
 
 ARG COMPOSER_VER=1.10.17
-ARG COMPOSER2_VER=2.0.6
+ARG COMPOSER2_VER=2.0.7
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
