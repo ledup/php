@@ -58,7 +58,7 @@ RUN yum -y install --disablerepo=epel \
     php-pecl-memcached \
     php-pecl-mongodb \
     php-pecl-ssh2 \
-    php-pecl-xdebug
+    php-pecl-xdebug3
 
 # requires EPEL
 RUN yum -y install php-pecl-maxminddb \
