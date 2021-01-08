@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.0.0
+ARG PHP_VER=8.0.1
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
