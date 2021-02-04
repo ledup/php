@@ -61,8 +61,8 @@ RUN yum -y install php-pecl-apcu \
 #    php-pecl-memcached \
 #    php-pecl-ssh2 \
 
-ARG COMPOSER_VER=1.10.19
-ARG COMPOSER2_VER=2.0.8
+ARG COMPOSER_VER=1.10.20
+ARG COMPOSER2_VER=2.0.9
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
