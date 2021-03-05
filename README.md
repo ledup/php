@@ -11,13 +11,13 @@ Docker image for php-fpm made to use with led.
 | **7.1**  | PHP 7.1.33       |
 | **7.2**  | PHP 7.2.34       |
 | **7.3**  | PHP 7.3.27       |
-| **7.4**  | PHP 7.4.15       |
-| **8.0**  | PHP 8.0.2        |
+| **7.4**  | PHP 7.4.16       |
+| **8.0**  | PHP 8.0.3        |
 
 ## Includes
 
 - Composer version 1.10.20 (prestaconcept)
-- Composer version 2.0.9 (prestaconcept)
+- Composer version 2.0.11 (prestaconcept)
 - Git 2.29.2 (prestaconcept)
 - Make 3.82
 - Wkhtmltopdf 0.12.3 (prestaconcept)
@@ -40,7 +40,7 @@ ssh2
 XDebug
 ```
 
-**Note** : Lot of this extensions are not yet compatible with PHP 8.0.0)
+**Note** : Some extensions are not yet compatible with PHP 8.0)
 
 XDebug is disabled by default. Set an environment variable `PHP_XDEBUG` setted to 1
 
