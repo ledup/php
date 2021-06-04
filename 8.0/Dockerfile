@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.0.6
+ARG PHP_VER=8.0.7
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
@@ -62,7 +62,7 @@ RUN yum -y install php-pecl-apcu \
 #    php-pecl-memcached
 
 ARG COMPOSER_VER=1.10.22
-ARG COMPOSER2_VER=2.0.13
+ARG COMPOSER2_VER=2.1.1
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
@@ -71,26 +71,6 @@ RUN yum install -y make git bash-completion openssh-clients \
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris  /etc/localtime
 ADD shared/conf/php/*.ini /etc/php.d/
-
-# sed operations by order :
-# - print daemon output to stderr to be readable from container's log
-# - disable daemonize to keep php-fpm in foreground
-RUN sed -e 's#^error_log = .*#error_log = /proc/self/fd/2#' \
-        -e 's#daemonize = yes#daemonize = no#' \
-        -i /etc/php-fpm.conf
-
-# sed operations by order about pool www :
-# - set listen to TCP socket
-# - remove access restriction by IP
-# - enable error output
-# - remove error log, will print output to php-fpm's daemon error_log
-# - enable access log, redirect to stderr to be readable from container's log
-RUN sed -e 's#^listen = .*#listen = 0.0.0.0:9000#' \
-        -e '/allowed_clients/d' \
-        -e '/catch_workers_output/s/^;//' \
-        -e '/error_log/d' \
-        -e 's#^;access.log = .*#access.log = /proc/self/fd/2#' \
-        -i /etc/php-fpm.d/www.conf
 
 ADD shared/scripts/entry.sh /entry.sh
 ADD shared/scripts/php_xdebug_composer.sh /php_xdebug_composer.sh

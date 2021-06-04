@@ -2,37 +2,29 @@
 
 ##### User management #####
 
-# Add local user
-# Either use the LOCAL_USER_ID if passed in at runtime or
-# fallback
-
-USER_ID=${_UID:-9001}
-
 # Remove root password
 usermod -p "" root
 
-useradd --shell /bin/bash -u $USER_ID -o -c "" -m dev
-
+# Add local user
+# Either use the _UID if passed in at runtime or fallback
+USER_ID=${_UID:-9001}
+USER="dev"
+useradd --shell /bin/bash -u "${USER_ID}" -o -c "" -m ${USER}
 # put user 'dev' into apache group, for php sessions
-gpasswd -a dev apache >/dev/null
+gpasswd -a ${USER} apache >/dev/null
 
-export HOME=/home/dev
-
-if [ -f /mnt/host/.gitconfig ];then
-    cp -a /mnt/host/.gitconfig /home/dev/.gitconfig
-    chown dev:dev /home/dev/.gitconfig
+if [ -f "/mnt/host/.gitconfig" ];then
+    su - ${USER} -c "cp -a /mnt/host/.gitconfig ~/.gitconfig"
 fi
 
-if [ -d /mnt/host/.ssh ];then
-    cp -a /mnt/host/.ssh /home/dev/.ssh
-
-    chown -R dev:dev /home/dev/.ssh
-    chmod 600 /home/dev/.ssh/*
-
-    echo "ssh-agent -s > /tmp/ssh.agent ; . /tmp/ssh.agent > /dev/null" >> /home/dev/.bashrc
+if [ -d "/mnt/host/.ssh" ];then
+    su - ${USER} -c "cp -a /mnt/host/.ssh ~/.ssh"
+    # avoid multiple ssh-agent launch
+    su - ${USER} -c "echo '[ ! -f /tmp/ssh.agent ] && ssh-agent -s > /tmp/ssh.agent ; . /tmp/ssh.agent > /dev/null' >> ~/.bashrc"
 fi
 
 ##### PHP configuration #####
+
 # commented in php-fpm pool, will be grabbed from this global configuration
 
 PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-8096M}
@@ -51,13 +43,32 @@ else
   sed -i 's/^\(zend_extension\)/;\1/' "${xdebug_file}"
 fi
 
-bash /php_xdebug_composer.sh >> "${HOME}/.bashrc"
+su - ${USER} -c "source /php_xdebug_composer.sh  >> ~/.bashrc"
 
 ##### PHP-FPM configuration #####
-# change php-fpm pool UID/GID
-PHPFPM_USER=dev
-sed -i "s#^user = .*#user = ${PHPFPM_USER}#" /etc/php-fpm.d/www.conf
-sed -i "s#^group = .*#group = ${PHPFPM_USER}#" /etc/php-fpm.d/www.conf
+
+# sed operations by order:
+# - print daemon output to stderr to be readable from container's log
+# - disable daemonize to keep php-fpm in foreground
+sed -e 's#^error_log = .*#error_log = /proc/self/fd/2#' \
+    -e 's#daemonize = yes#daemonize = no#' \
+    -i /etc/php-fpm.conf
+
+# sed operations by order about pool www:
+# - set listen to TCP socket
+# - remove access restriction by IP
+# - enable error output
+# - remove error log, will print output to php-fpm's daemon error_log
+# - enable access log, redirect to stderr to be readable from container's log
+# - change user/group
+sed -e 's#^listen = .*#listen = 0.0.0.0:9000#' \
+    -e '/allowed_clients/d' \
+    -e '/catch_workers_output/s/^;//' \
+    -e '/error_log/d' \
+    -e 's#^;access.log = .*#access.log = /proc/self/fd/2#' \
+    -e "s#^user = .*#user = ${USER}#" \
+    -e "s#^group = .*#group = ${USER}#" \
+    -i /etc/php-fpm.d/www.conf
 
 # use exec to avoid subshell
 exec "$@"
