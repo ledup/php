@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.1.0~alpha2
+ARG PHP_VER=8.1.0~beta2
 
 # intl extension can't load for now, undefined symbol
 RUN yum clean metadata \
@@ -24,7 +24,7 @@ RUN yum clean metadata \
     php-gettext \
     php-gmp \
     php-imap \
-#    php-intl \
+#   php-intl \
     php-ldap \
     php-litespeed \
     php-mbstring \
@@ -46,25 +46,24 @@ RUN yum clean metadata \
     php-xml \
     php-zip
 
-# TODO
-# RUN yum -y install php-pecl-apcu \
-#     php-pecl-ast \
-#     php-pecl-http \
-#     php-pecl-lz4 \
+RUN yum -y install php-pecl-apcu \
+     php-pecl-ast \
+     php-pecl-http \
+     php-pecl-imagick \
+     php-pecl-lz4 \
 #     php-pecl-mailparse \
-#     php-pecl-maxminddb \
+     php-pecl-maxminddb \
 #     php-pecl-mongodb \
-#     php-pecl-redis \
-#     php-pecl-ssh2 \
-#     php-pecl-xdebug
+     php-pecl-redis \
+     php-pecl-ssh2 \
+     php-pecl-xdebug
 
 ## not yet compatible with php 8:
 #    php-pecl-amqp \
-#    php-pecl-imagick \
 #    php-pecl-memcached
 
 ARG COMPOSER_VER=1.10.22
-ARG COMPOSER2_VER=2.1.1
+ARG COMPOSER2_VER=2.1.5
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \

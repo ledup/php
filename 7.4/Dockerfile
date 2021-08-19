@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=7.4.21
+ARG PHP_VER=7.4.22
 
 RUN yum clean metadata \
     && yum install -y yum-utils \
@@ -65,7 +65,7 @@ RUN yum -y install php-pecl-maxminddb \
                    php-pecl-redis
 
 ARG COMPOSER_VER=1.10.22
-ARG COMPOSER2_VER=2.1.3
+ARG COMPOSER2_VER=2.1.5
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \

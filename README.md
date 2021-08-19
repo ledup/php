@@ -11,14 +11,14 @@ Docker image for php-fpm made to use with led.
 | **7.1**  | PHP 7.1.33       |
 | **7.2**  | PHP 7.2.34       |
 | **7.3**  | PHP 7.3.29       |
-| **7.4**  | PHP 7.4.21       |
-| **8.0**  | PHP 8.0.8        |
-| **8.1**  | PHP 8.1.0~alpha2 |
+| **7.4**  | PHP 7.4.22       |
+| **8.0**  | PHP 8.0.9        |
+| **8.1**  | PHP 8.1.0~beta2  |
 
 ## Includes
 
 - Composer version 1.10.22 (prestaconcept)
-- Composer version 2.1.3 (prestaconcept)
+- Composer version 2.1.5 (prestaconcept)
 - Git 2.29.2 (prestaconcept)
 - Make 3.82
 - Wkhtmltopdf 0.12.3 (prestaconcept)
