@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.1.0~beta2
+ARG PHP_VER=8.1.0~beta3
 
 # intl extension can't load for now, undefined symbol
 RUN yum clean metadata \
@@ -63,7 +63,7 @@ RUN yum -y install php-pecl-apcu \
 #    php-pecl-memcached
 
 ARG COMPOSER_VER=1.10.22
-ARG COMPOSER2_VER=2.1.5
+ARG COMPOSER2_VER=2.1.6
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \
