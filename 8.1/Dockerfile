@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.1.0~beta3
+ARG PHP_VER=8.1.0~RC1
 
 # intl extension can't load for now, undefined symbol
 RUN yum clean metadata \
@@ -51,7 +51,7 @@ RUN yum -y install php-pecl-apcu \
      php-pecl-http \
      php-pecl-imagick \
      php-pecl-lz4 \
-#     php-pecl-mailparse \
+     php-pecl-mailparse \
      php-pecl-maxminddb \
 #     php-pecl-mongodb \
      php-pecl-redis \
