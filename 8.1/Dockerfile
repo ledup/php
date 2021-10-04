@@ -2,10 +2,10 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.1.0~RC2
+ARG PHP_VER=8.1.0~RC3
 
 # intl extension can't load for now, undefined symbol
-RUN yum clean metadata \
+RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y http://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \

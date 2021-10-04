@@ -4,7 +4,7 @@ MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
 ARG PHP_VER=7.1.33
 
-RUN yum clean metadata \
+RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y http://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \
