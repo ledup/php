@@ -2,9 +2,8 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.1.0~RC3
+ARG PHP_VER=8.1.0~RC4
 
-# intl extension can't load for now, undefined symbol
 RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y http://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
@@ -24,7 +23,7 @@ RUN yum clean metadata && yum -y update \
     php-gettext \
     php-gmp \
     php-imap \
-#   php-intl \
+    php-intl \
     php-ldap \
     php-litespeed \
     php-mbstring \
