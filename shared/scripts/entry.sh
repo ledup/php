@@ -19,8 +19,11 @@ fi
 
 if [ -d "/mnt/host/.ssh" ];then
     su - ${USER} -c "cp -a /mnt/host/.ssh ~/.ssh"
-    # avoid multiple ssh-agent launch
-    su - ${USER} -c "echo '[ ! -f /tmp/ssh.agent ] && ssh-agent -s > /tmp/ssh.agent ; . /tmp/ssh.agent > /dev/null' >> ~/.bashrc"
+    # if not using existing ssh agent socket, fallback with a local agent
+    if [ ! -S "${SSH_AUTH_SOCK}" ]; then
+      # avoid multiple ssh-agent launch
+      su - ${USER} -c "echo '[ ! -f /tmp/ssh.agent ] && ssh-agent -s > /tmp/ssh.agent ; . /tmp/ssh.agent > /dev/null' >> ~/.bashrc"
+    fi
 fi
 
 ##### PHP configuration #####
