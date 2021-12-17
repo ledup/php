@@ -61,7 +61,7 @@ RUN yum -y install php-pecl-apcu \
 ## not yet compatible with php 8:
 #    php-pecl-memcached
 
-ARG COMPOSER_VER=1.10.22
+ARG COMPOSER_VER=1.10.24
 ARG COMPOSER2_VER=2.1.14
 
 RUN yum install -y make git bash-completion openssh-clients \

@@ -64,7 +64,7 @@ RUN yum -y install --disablerepo=epel \
 RUN yum -y install php-pecl-maxminddb \
                    php-pecl-redis
 
-ARG COMPOSER_VER=1.10.22
+ARG COMPOSER_VER=1.10.24
 ARG COMPOSER2_VER=2.1.14
 
 RUN yum install -y make git bash-completion openssh-clients \
