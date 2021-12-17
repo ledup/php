@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.0.13
+ARG PHP_VER=8.0.14
 
 RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
@@ -46,6 +46,7 @@ RUN yum clean metadata && yum -y update \
     php-zip
 
 RUN yum -y install php-pecl-apcu \
+    php-pecl-amqp \
     php-pecl-ast \
     php-pecl-http \
     php-pecl-imagick \
@@ -58,11 +59,10 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-xdebug
 
 ## not yet compatible with php 8:
-#    php-pecl-amqp \
 #    php-pecl-memcached
 
 ARG COMPOSER_VER=1.10.22
-ARG COMPOSER2_VER=2.1.12
+ARG COMPOSER2_VER=2.1.14
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum install -y wkhtmltox-bundle \

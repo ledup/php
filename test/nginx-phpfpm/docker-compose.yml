@@ -23,4 +23,5 @@ services:
     image: ledup/php:8.1
     volumes:
     - .:/src
+    working_dir: /src
 version: '2'
