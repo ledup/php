@@ -17,7 +17,6 @@ Docker image for php-fpm made to use with led.
 
 ## Includes
 
-- Composer 1.x (prestaconcept)
 - Composer 2.x (prestaconcept)
 - Git 2 (prestaconcept)
 - Make 3.82
