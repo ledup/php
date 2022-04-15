@@ -11,9 +11,9 @@ Docker image for php-fpm made to use with led.
 | **7.1**  | PHP 7.1.33       |
 | **7.2**  | PHP 7.2.34       |
 | **7.3**  | PHP 7.3.33       |
-| **7.4**  | PHP 7.4.28       |
-| **8.0**  | PHP 8.0.17       |
-| **8.1**  | PHP 8.1.4        |
+| **7.4**  | PHP 7.4.29       |
+| **8.0**  | PHP 8.0.18       |
+| **8.1**  | PHP 8.1.5        |
 
 ## Includes
 
@@ -39,8 +39,6 @@ redis
 ssh2
 XDebug
 ```
-
-**Note** : Some extensions are not yet compatible with PHP 8.0)
 
 XDebug is disabled by default. Set an environment variable `PHP_XDEBUG` setted to 1
 
