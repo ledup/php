@@ -64,7 +64,8 @@ RUN yum -y install --disablerepo=epel \
 ARG COMPOSER2_VER=2.2.9
 
 RUN yum install -y make git bash-completion openssh-clients \
-    && yum install -y wkhtmltox-bundle \
+    && yum-config-manager --enable prestaconcept-externals \
+    && yum install -y wkhtmltox-0.12.6 wkhtmltox-bundle \
     && yum install -y composer2-${COMPOSER2_VER} \
     && yum clean all
 

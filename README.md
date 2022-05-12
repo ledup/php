@@ -20,7 +20,7 @@ Docker image for php-fpm made to use with led.
 - Composer 2.x (prestaconcept)
 - Git 2 (prestaconcept)
 - Make 3.82
-- Wkhtmltopdf 0.12.3 (prestaconcept)
+- Wkhtmltopdf 0.12.6
 
 ### PECL
 
