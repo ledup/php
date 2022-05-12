@@ -12,8 +12,8 @@ Docker image for php-fpm made to use with led.
 | **7.2**  | PHP 7.2.34       |
 | **7.3**  | PHP 7.3.33       |
 | **7.4**  | PHP 7.4.29       |
-| **8.0**  | PHP 8.0.18       |
-| **8.1**  | PHP 8.1.5        |
+| **8.0**  | PHP 8.0.19       |
+| **8.1**  | PHP 8.1.6        |
 
 ## Includes
 
