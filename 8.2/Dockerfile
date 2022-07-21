@@ -45,19 +45,19 @@ RUN yum clean metadata && yum -y update \
     php-xml \
     php-zip
 
-#RUN yum -y install php-pecl-apcu \
-#    php-pecl-amqp \
-#    php-pecl-ast \
-#    php-pecl-http \
-#    php-pecl-imagick \
-#    php-pecl-lz4 \
-#    php-pecl-mailparse \
-#    php-pecl-memcached \
-#    php-pecl-maxminddb \
-#    php-pecl-mongodb \
-#    php-pecl-redis \
-#    php-pecl-ssh2 \
-#    php-pecl-xdebug
+RUN yum -y install php-pecl-apcu \
+    php-pecl-amqp \
+    php-pecl-ast \
+    php-pecl-http \
+    php-pecl-imagick \
+    php-pecl-lz4 \
+    php-pecl-mailparse \
+    php-pecl-memcached \
+    php-pecl-maxminddb \
+    php-pecl-mongodb \
+    php-pecl-redis \
+    php-pecl-ssh2 \
+    php-pecl-xdebug
 
 ARG COMPOSER2_VER=2.3.10
 

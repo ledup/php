@@ -37,13 +37,14 @@ sed -i "s#\(memory_limit = \).*#\1${PHP_MEMORY_LIMIT}#g" /etc/php.d/php-default.
 
 # detect xdebug configuration file
 xdebug_file=$(php --ini | grep -F 'xdebug.ini' | tr -d ',')
-
-# enable if wanted
-if [ "${PHP_XDEBUG}" == "1" ]; then
-  sed -i 's/^;\(zend_extension\)/\1/' "${xdebug_file}"
-else
-  # or disable
-  sed -i 's/^\(zend_extension\)/;\1/' "${xdebug_file}"
+if [ -f "${xdebug_file}" ]; then
+  # enable if wanted
+  if [ "${PHP_XDEBUG}" == "1" ]; then
+    sed -i 's/^;\(zend_extension\)/\1/' "${xdebug_file}"
+  else
+    # or disable
+    sed -i 's/^\(zend_extension\)/;\1/' "${xdebug_file}"
+  fi
 fi
 
 su - ${USER} -c "source /php_xdebug_composer.sh  >> ~/.bashrc"
