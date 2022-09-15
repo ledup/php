@@ -74,5 +74,9 @@ sed -e 's#^listen = .*#listen = 0.0.0.0:9000#' \
     -e "s#^group = .*#group = ${USER}#" \
     -i /etc/php-fpm.d/www.conf
 
+# add Composer completion if provided
+if ! composer completion bash > /etc/bash_completion.d/composer 2>/dev/null; then
+  rm /etc/bash_completion.d/composer
+fi
 # use exec to avoid subshell
 exec "$@"
