@@ -2,22 +2,13 @@
 xdebug_file=$(php --ini | grep -F 'xdebug.ini' | tr -d ',')
 if [ -n "${xdebug_file}" ]; then
 cat <<EOF
-## XDebug and composer stuff ##
+## XDebug stuff ##
 function xdebug_enable() {
   su - -c "sed -i 's/^;\(zend_extension\)/\1/' ${xdebug_file}"
 }
 
 function xdebug_disable() {
   su - -c "sed -i 's/^\(zend_extension\)/;\1/' ${xdebug_file}"
-}
-
-function composer() {
-  local COMPOSER="\$(type -P composer)" || { echo "Could not find composer in path" >&2 ; return 1 ; }
-
-  php_noxdebug \$COMPOSER "\$@"
-  local STATUS=\$?
-
-  return \$STATUS
 }
 
 function php_noxdebug() {

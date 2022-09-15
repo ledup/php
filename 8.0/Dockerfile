@@ -71,7 +71,7 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Paris  /etc/localtime
 ADD shared/conf/php/*.ini /etc/php.d/
 
 ADD shared/scripts/entry.sh /entry.sh
-ADD shared/scripts/php_xdebug_composer.sh /php_xdebug_composer.sh
+ADD shared/scripts/php_xdebug.sh /
 
 EXPOSE 9000
 

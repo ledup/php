@@ -47,7 +47,7 @@ if [ -f "${xdebug_file}" ]; then
   fi
 fi
 
-su - ${USER} -c "source /php_xdebug_composer.sh  >> ~/.bashrc"
+su - ${USER} -c "source /php_xdebug.sh  >> ~/.bashrc"
 
 ##### PHP-FPM configuration #####
 
