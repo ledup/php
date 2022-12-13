@@ -2,13 +2,13 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.2.0~rc6
+ARG PHP_VER=8.2.0
 
 RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y https://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \
-    && yum-config-manager --enable prestaconcept-php82-test \
+    && yum-config-manager --enable prestaconcept-php82 \
     && yum -y install \
     php-${PHP_VER} \
     php-bcmath \
