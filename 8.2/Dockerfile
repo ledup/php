@@ -55,6 +55,7 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-memcached \
     php-pecl-maxminddb \
     php-pecl-mongodb \
+    php-pecl-pcov \
     php-pecl-redis \
     php-pecl-ssh2 \
     php-pecl-xdebug

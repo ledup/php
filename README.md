@@ -36,12 +36,16 @@ mailparse
 memcached
 mongodb
 maxminddb
+pcov
 redis
 ssh2
 XDebug
 ```
 
-XDebug is disabled by default. Set an environment variable `PHP_XDEBUG` setted to 1
+- XDebug is disabled by default. Set an environment variable `PHP_XDEBUG` setted to 1
+- PCOV is disabled by default. Set an environment variable `PHP_PCOV` setted to 1
+
+The container will exit if Xdebug and PCOV are enabled together
 
 ## Usage
 

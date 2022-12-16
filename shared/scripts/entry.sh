@@ -37,6 +37,8 @@ sed -i "s#\(memory_limit = \).*#\1${PHP_MEMORY_LIMIT}#g" /etc/php.d/php-default.
 
 # detect xdebug configuration file
 xdebug_file=$(php --ini | grep -F 'xdebug.ini' | tr -d ',')
+pcov_file=$(php --ini | grep -F 'pcov.ini' | tr -d ',')
+
 if [ -f "${xdebug_file}" ]; then
   # enable if wanted
   if [ "${PHP_XDEBUG}" == "1" ]; then
@@ -45,6 +47,20 @@ if [ -f "${xdebug_file}" ]; then
     # or disable
     sed -i 's/^\(zend_extension\)/;\1/' "${xdebug_file}"
   fi
+fi
+
+if [ -f "${pcov_file}" ]; then
+  sed -i '/pcov.enabled/d' "${pcov_file}"
+  if [ "${PHP_PCOV}" == "1" ]; then
+    echo "pcov.enabled = 1" >> "${pcov_file}"
+  else
+    echo "pcov.enabled = 0" >> "${pcov_file}"
+  fi
+fi
+
+if [[ ${PHP_XDEBUG} == 1 && ${PHP_PCOV} == 1 ]]; then
+  echo "Error: PHP_XDEBUG and PHP_PCOV must not be enabled together"
+  exit 1
 fi
 
 su - ${USER} -c "source /php_xdebug.sh  >> ~/.bashrc"
