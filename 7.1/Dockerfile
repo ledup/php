@@ -57,6 +57,7 @@ RUN yum -y install --disablerepo=epel \
     php-pecl-mailparse \
     php-pecl-memcached \
     php-pecl-mongodb \
+    php-pecl-pcov \
     php-pecl-ssh2 \
     php-pecl-xdebug
 

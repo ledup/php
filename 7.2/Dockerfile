@@ -57,6 +57,7 @@ RUN yum -y install --disablerepo=epel \
     php-pecl-mailparse \
     php-pecl-memcached \
     php-pecl-mongodb \
+    php-pecl-pcov \
     php-pecl-ssh2 \
     php-pecl-xdebug3
 
@@ -64,7 +65,7 @@ RUN yum -y install --disablerepo=epel \
 RUN yum -y install php-pecl-maxminddb \
                    php-pecl-redis
 
-ARG COMPOSER2_VER=2.4.2
+ARG COMPOSER2_VER=2.4.4
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum-config-manager --enable prestaconcept-externals \
