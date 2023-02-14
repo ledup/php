@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.2.2
+ARG PHP_VER=8.2.3
 
 RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
@@ -60,12 +60,12 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-ssh2 \
     php-pecl-xdebug
 
-ARG COMPOSER2_VER=2.4.4
+ARG COMPOSER2_VER=2.5.3
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum-config-manager --enable prestaconcept-externals \
     && yum install -y wkhtmltox-0.12.6 wkhtmltox-bundle \
-    && yum install -y composer24-${COMPOSER2_VER} \
+    && yum install -y composer2-${COMPOSER2_VER} \
     && yum clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris  /etc/localtime

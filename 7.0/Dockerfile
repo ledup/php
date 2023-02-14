@@ -64,13 +64,13 @@ RUN yum -y install --disablerepo=epel \
 RUN yum -y install php-pecl-maxminddb \
                    php-pecl-redis
 
-ARG COMPOSER2_VER=2.2.18
+ARG COMPOSER2_VER=2.2.20
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum-config-manager --enable prestaconcept-externals \
     && yum install -y wkhtmltox-0.12.6 wkhtmltox-bundle \
     && yum install -y wkhtmltox-bundle \
-    && yum install -y composer2-${COMPOSER2_VER} \
+    && yum install -y composer22-${COMPOSER2_VER} \
     && yum clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris  /etc/localtime
