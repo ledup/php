@@ -13,7 +13,7 @@ _php_get_service_env_key()
   local service_keys service_key
   local dc_key
 
-  service_keys=$(${VENDORS_BIN_JYPARSER}  "${dc_file}" get ".services | keys" | cut -c3-)
+  service_keys=$(yq -Y ".services | keys" "${dc_file}" | cut -c3-)
   for service_key in ${service_keys}
   do
     # if a service start with "php" or "apache", stop and get his env key
@@ -25,7 +25,7 @@ _php_get_service_env_key()
 
   if [ -z "${dc_key}" ]; then
     echo >&2 "Can't detect a service starting with 'apache' or 'php'"
-    exit 1
+    return 1
   fi
 
   echo "${dc_key}"
@@ -54,12 +54,6 @@ php_plugin()
   fi
 
   options=( "${@}" )
-
-  # ensure constant for jyparser is available
-  if [ -z "${VENDORS_BIN_JYPARSER}" ]; then
-    echo "This plugin cannot work with this version of led, please upgrade"
-    exit 1
-  fi
 
   case $command in
       xdebug) php_xdebug "${options[*]}";;
@@ -90,7 +84,7 @@ php_xdebug()
 
     if ! func_exists _dockercompose_file_check 2>/dev/null; then
       echo "please upgrade LED" >&2
-      exit 1
+      return 1
     fi
     _dockercompose_file_check
 
@@ -111,11 +105,11 @@ php_xdebug()
 
     if [ ! -f "${dc_file}" ]; then
       echo >&2 "${dc_file} not found"
-      exit 1
+      return 1
     fi
 
     if ! dc_key=$(_php_get_service_env_key "PHP_XDEBUG"); then
-      exit 1
+      return 1
     fi
 
     local xdebug_value=
@@ -123,7 +117,7 @@ php_xdebug()
         enable) xdebug_value=1;;
         disable) xdebug_value=0;;
         switch)
-          xdebug_value=$(${VENDORS_BIN_JYPARSER} "${dc_file}" get "${dc_key}")
+          xdebug_value=$(yq -r "${dc_key}" "${dc_file}")
           [ "${xdebug_value}" == "null" ] && xdebug_value=0
           # value can be 1 or 0, so substract to reverse
           xdebug_value=$((1 - xdebug_value))
@@ -132,12 +126,12 @@ php_xdebug()
 
 
     if [ ${xdebug_value} -eq 0 ]; then
-      ${VENDORS_BIN_JYPARSER} "${dc_file}" del "${dc_key}" > "${dc_file_tmp}" \
+      yq -rY "del(${dc_key})" "${dc_file}" > "${dc_file_tmp}" \
       && mv "${dc_file_tmp}" "${dc_file}"
       ret=$?
       message="XDebug disabled"
     else
-      ${VENDORS_BIN_JYPARSER} "${dc_file}" set "${dc_key}" 1 > "${dc_file_tmp}" \
+      yq -rY "${dc_key} = 1" "${dc_file}" > "${dc_file_tmp}" \
       && mv "${dc_file_tmp}" "${dc_file}"
       ret=$?
       message="XDebug enabled"
@@ -166,7 +160,7 @@ php_memory()
 
   if ! func_exists _dockercompose_file_check 2>/dev/null; then
     echo "please upgrade LED" >&2
-    exit 1
+    return 1
   fi
   _dockercompose_file_check
 
@@ -179,18 +173,18 @@ php_memory()
 
   if [ ! -f "${dc_file}" ]; then
     echo >&2 "${dc_file} not found"
-    exit 1
+    return 1
   fi
 
   if ! dc_key=$(_php_get_service_env_key "PHP_MEMORY_LIMIT"); then
-    exit 1
+    return 1
   fi
 
   local memory=$1
 
   if [ -z "${memory}" ]; then
     # if no memory set, remove entry from configuration to get default container value
-    ${VENDORS_BIN_JYPARSER} "${dc_file}" del "${dc_key}" > "${dc_file_tmp}" \
+    yq -rY "del(${dc_key})" "${dc_file}" > "${dc_file_tmp}" \
     && mv "${dc_file_tmp}" "${dc_file}"
     ret=$?
     message="Memory limit is restored to the default value"
@@ -198,13 +192,13 @@ php_memory()
     # if memory is set, override default container value
     if [[ ! ${memory} =~ ^[0-9]+$ ]]; then
       echo >&2 "memory value must be a number"
-      exit 1
+      return 1
     fi
 
     # set memory value in megabyte
     memory=${memory}M
 
-    ${VENDORS_BIN_JYPARSER} "${dc_file}" set "${dc_key}" \""${memory}"\" > "${dc_file_tmp}" \
+    yq -rY "${dc_key} = \"${memory}\"" "${dc_file}" > "${dc_file_tmp}" \
     && mv "${dc_file_tmp}" "${dc_file}"
     ret=$?
     message="Memory limit fixed to ${memory}"
