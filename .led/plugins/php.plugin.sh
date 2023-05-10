@@ -58,7 +58,7 @@ php_plugin()
   case $command in
       xdebug) php_xdebug "${options[*]}";;
       memory) php_memory "${options[*]}";;
-      "") help plugin php;;
+      "") help php;;
       *) echo -e "Unknown plugin command: $command\n"; help plugin php;;
   esac
 }
