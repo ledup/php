@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.1.19
+ARG PHP_VER=8.1.20
 
 RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
@@ -60,7 +60,7 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-ssh2 \
     php-pecl-xdebug
 
-ARG COMPOSER2_VER=2.5.5
+ARG COMPOSER2_VER=2.5.7
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum-config-manager --enable prestaconcept-externals \
