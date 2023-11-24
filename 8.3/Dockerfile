@@ -2,13 +2,13 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.3.0~rc6
+ARG PHP_VER=8.3.0
 
 RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y https://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \
-    && yum-config-manager --enable prestaconcept-php83-test \
+    && yum-config-manager --enable prestaconcept-php83 \
     && yum -y install \
     php-${PHP_VER} \
     php-bcmath \
@@ -45,20 +45,20 @@ RUN yum clean metadata && yum -y update \
     php-xml \
     php-zip
 
-#RUN yum -y install php-pecl-apcu \
-#    php-pecl-amqp \
-#    php-pecl-ast \
-#    php-pecl-http \
-#    php-pecl-imagick \
-#    php-pecl-lz4 \
-#    php-pecl-mailparse \
-#    php-pecl-memcached \
-#    php-pecl-maxminddb \
-#    php-pecl-mongodb \
-#    php-pecl-pcov \
-#    php-pecl-redis \
-#    php-pecl-ssh2 \
-#    php-pecl-xdebug
+RUN yum -y install php-pecl-apcu \
+    php-pecl-amqp \
+    php-pecl-ast \
+    php-pecl-http \
+    php-pecl-imagick \
+    php-pecl-lz4 \
+    php-pecl-mailparse \
+    php-pecl-memcached \
+    php-pecl-maxminddb \
+    php-pecl-mongodb \
+    php-pecl-pcov \
+    php-pecl-redis \
+    php-pecl-ssh2 \
+    php-pecl-xdebug
 
 ARG COMPOSER2_VER=2.6.5
 
