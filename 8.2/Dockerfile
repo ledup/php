@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.2.13
+ARG PHP_VER=8.2.14
 ENV ACCEPT_EULA=Y
 
 RUN yum clean metadata && yum -y update \
