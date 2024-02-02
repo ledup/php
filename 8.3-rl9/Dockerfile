@@ -2,7 +2,7 @@ FROM rockylinux:9
 
 LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
-ARG PHP_MAJOR=8.1
+ARG PHP_MAJOR=8.3
 ENV ACCEPT_EULA=Y
 
 RUN dnf clean metadata \

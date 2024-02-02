@@ -43,6 +43,9 @@ ssh2
 XDebug
 ```
 
+(+ `sqlsrv` with some tags)
+
+
 - XDebug is disabled by default. Set an environment variable `PHP_XDEBUG` setted to 1
 - PCOV is disabled by default. Set an environment variable `PHP_PCOV` setted to 1
 
