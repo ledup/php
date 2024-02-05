@@ -21,6 +21,8 @@ Docker image for php-fpm made to use with led.
 
 ### RockyLinux
 
+| Tag         | Description |
+|-------------|-------------|
 | **8.1-rl9** | PHP 8.1.27  |
 | **8.2-rl9** | PHP 8.2.15  |
 | **8.3-rl9** | PHP 8.3.2   |
