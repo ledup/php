@@ -4,6 +4,8 @@ Docker image for php-fpm made to use with led.
 
 ## Available versions
 
+### CentOS 7
+
 | Tag     | Description |
 |---------|-------------|
 | **5.6** | PHP 5.6.40  |
@@ -17,10 +19,16 @@ Docker image for php-fpm made to use with led.
 | **8.2** | PHP 8.2.15  |
 | **8.3** | PHP 8.3.2   |
 
+### RockyLinux
+
+| **8.1-rl9** | PHP 8.1.27  |
+| **8.2-rl9** | PHP 8.2.15  |
+| **8.3-rl9** | PHP 8.3.2   |
+
 ## Includes
 
-- Composer 2.x (prestaconcept)
-- Git 2 (prestaconcept)
+- Composer 2.x
+- Git
 - Make 3.82
 - Wkhtmltopdf 0.12.6
 
