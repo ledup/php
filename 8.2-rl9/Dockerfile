@@ -48,7 +48,7 @@ RUN dnf install -y php-pecl-apcu \
     php-pecl-amqp \
     php-pecl-ast \
     php-pecl-http \
-    php-pecl-imagick \
+    php-pecl-imagick-im7 \
     php-lz4 \
     php-pecl-mailparse \
     php-pecl-memcached \
