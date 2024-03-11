@@ -3,12 +3,14 @@ FROM centos:7
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
 ARG PHP_VER=8.3.3
+ENV ACCEPT_EULA=Y
 
 RUN yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y https://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \
     && yum-config-manager --enable prestaconcept-php83 \
+    && curl https://packages.microsoft.com/config/rhel/7/prod.repo -o /etc/yum.repos.d/mssql-release.repo \
     && yum -y install \
     php-${PHP_VER} \
     php-bcmath \
@@ -57,6 +59,7 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-mongodb \
     php-pecl-pcov \
     php-pecl-redis \
+    php-pecl-sqlsrv \
     php-pecl-ssh2 \
     php-pecl-xdebug
 
