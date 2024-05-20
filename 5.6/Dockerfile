@@ -61,7 +61,7 @@ RUN yum -y install --disablerepo=epel \
     php-pecl-xdebug \
     && yum install -y php-pecl-maxminddb
 
-ARG COMPOSER2_VER=2.2.20
+ARG COMPOSER2_VER=2.2.23
 
 RUN yum install -y make git bash-completion openssh-clients \
     && yum-config-manager --enable prestaconcept-externals \
