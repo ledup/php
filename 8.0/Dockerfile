@@ -60,7 +60,7 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-ssh2 \
     php-pecl-xdebug
 
-ARG COMPOSER2_VER=2.7.6
+ARG COMPOSER2_VER=2.7.7
 
 RUN yum install -y make git bash-completion openssh-clients patch \
     && yum-config-manager --enable prestaconcept-externals \
