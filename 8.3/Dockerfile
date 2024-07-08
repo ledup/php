@@ -2,10 +2,11 @@ FROM centos:7
 
 MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
 
-ARG PHP_VER=8.3.8
+ARG PHP_VER=8.3.9
 ENV ACCEPT_EULA=Y
 
-RUN yum clean metadata && yum -y update \
+RUN sed -i -e 's|\(^mirrorlist*\)|#\1|'  -e 's|^#\(baseurl*\)|\1|' -e 's|mirror.centos.org|vault.centos.org|' /etc/yum.repos.d/CentOS-Base.repo \
+    && yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y https://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \
