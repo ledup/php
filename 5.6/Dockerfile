@@ -1,10 +1,11 @@
 FROM centos:7
 
-MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
+LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
 ARG PHP_VER=5.6.40
 
-RUN yum clean metadata && yum -y update \
+RUN sed -i -e 's|\(^mirrorlist*\)|#\1|'  -e 's|^#\(baseurl*\)|\1|' -e 's|mirror.centos.org|vault.centos.org|' /etc/yum.repos.d/CentOS-Base.repo \
+    && yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y http://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \

@@ -1,6 +1,6 @@
 FROM centos:7
 
-MAINTAINER Didier BONNEFOI <dbonnefoi@prestaconcept.net>
+LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
 ARG PHP_VER=8.2.21
 ENV ACCEPT_EULA=Y
