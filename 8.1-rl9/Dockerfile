@@ -1,11 +1,11 @@
-FROM rockylinux/rockylinux:9.4
+FROM rockylinux/rockylinux:9.5
 
 LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
 ARG PHP_MAJOR=8.1
 ENV ACCEPT_EULA=Y
 
-RUN dnf clean metadata \
+RUN dnf clean metadata && dnf update -y \
     && dnf install -y yum-utils https://rpms.remirepo.net/enterprise/remi-release-9.rpm \
     && dnf module -y reset php \
     && dnf module -y install php:remi-${PHP_MAJOR} \

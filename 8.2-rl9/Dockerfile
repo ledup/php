@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9.4
+FROM rockylinux/rockylinux:9.5
 
 LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
