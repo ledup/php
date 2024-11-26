@@ -20,7 +20,7 @@ services:
       file: $HOME/.led/docker-base.yaml
       service: localuser
     hostname: php
-    image: ledup/php:8.3-rl9
+    image: ledup/php:8.4-rl9
     volumes:
     - .:/src
     working_dir: /src
