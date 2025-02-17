@@ -25,8 +25,8 @@ Docker image for php-fpm made to use with led.
 |-------------|-------------|
 | **8.1-rl9** | PHP 8.1.31  |
 | **8.2-rl9** | PHP 8.2.27  |
-| **8.3-rl9** | PHP 8.3.15  |
-| **8.4-rl9** | PHP 8.4.2   |
+| **8.3-rl9** | PHP 8.3.17  |
+| **8.4-rl9** | PHP 8.4.4   |
 
 ## Includes
 
@@ -85,7 +85,3 @@ docker run -it -e PHP_MEMORY_LIMIT=1024M --rm ledup/php:*tag* php -i | grep memo
 ## Logs
 
 Daemon output is redirected to stderr to be readable from container's log with `docker logs [container_name]`
-
-## Misc
-
-In this images, `composer` is wrapped to a shell function which disable XDebug on-the-fly if enabled
