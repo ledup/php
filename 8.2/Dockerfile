@@ -2,7 +2,7 @@ FROM centos:7
 
 LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
-ARG PHP_VER=8.2.27
+ARG PHP_VER=8.2.28
 ENV ACCEPT_EULA=Y
 
 RUN sed -i -e 's|\(^mirrorlist*\)|#\1|'  -e 's|^#\(baseurl*\)|\1|' -e 's|mirror.centos.org|vault.centos.org|' /etc/yum.repos.d/CentOS-Base.repo \
@@ -64,7 +64,7 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-ssh2 \
     php-pecl-xdebug
 
-ARG COMPOSER2_VER=2.8.5
+ARG COMPOSER2_VER=2.8.6
 
 RUN yum install -y make git bash-completion openssh-clients patch \
     && yum-config-manager --enable prestaconcept-externals \
