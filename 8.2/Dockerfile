@@ -2,7 +2,7 @@ FROM centos:7
 
 LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
-ARG PHP_VER=8.2.28
+ARG PHP_VER=8.2.29
 ENV ACCEPT_EULA=Y
 
 RUN sed -i -e 's|\(^mirrorlist*\)|#\1|'  -e 's|^#\(baseurl*\)|\1|' -e 's|mirror.centos.org|vault.centos.org|' /etc/yum.repos.d/CentOS-Base.repo \
