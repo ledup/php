@@ -66,6 +66,7 @@ RUN dnf module install -y composer:2
 RUN dnf install -y make git bash-completion openssh-clients patch unzip p7zip p7zip-plugins \
     && dnf config-manager --add-repo https://rpm.prestaconcept.net/externals/presta-rhel-externals.repo \
     && dnf install -y --enablerepo prestaconcept-externals wkhtmltox liberation*fonts \
+    && dnf install -y curl libcurl --allowerasing \
     && dnf clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
