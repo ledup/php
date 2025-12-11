@@ -37,6 +37,7 @@ Docker image for php-fpm made to use with led.
 - Git
 - Make 3.82
 - Wkhtmltopdf 0.12.6
+- On RL9 tags, images optimization CLI : jpegoptim, optipng, pngquant, gifsicle, libwebp Tools, libavif Tools
 
 ### PECL
 

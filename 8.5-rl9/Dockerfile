@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9.6
+FROM rockylinux/rockylinux:9.7
 
 LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
@@ -9,8 +9,8 @@ RUN dnf clean metadata && dnf update -y \
     && dnf install -y yum-utils https://rpms.remirepo.net/enterprise/remi-release-9.rpm \
     && dnf module -y reset php \
     && dnf module -y install php:remi-${PHP_MAJOR} \
-    && crb enable
-#    && curl https://packages.microsoft.com/config/rhel/9/prod.repo -o /etc/yum.repos.d/mssql-release.repo
+    && crb enable \
+    && curl https://packages.microsoft.com/config/rhel/9/prod.repo -o /etc/yum.repos.d/mssql-release.repo
 
 RUN dnf install -y \
     php-bcmath \
@@ -56,6 +56,7 @@ RUN dnf install -y php-pecl-apcu \
     php-pecl-mongodb \
     php-pecl-pcov \
     php-pecl-redis \
+#    php-sqlsrv \
     php-pecl-ssh2 \
     php-pecl-xdebug \
     php-pecl-zip
@@ -66,6 +67,7 @@ RUN dnf install -y make git bash-completion openssh-clients patch unzip p7zip p7
     && dnf config-manager --add-repo https://rpm.prestaconcept.net/externals/presta-rhel-externals.repo \
     && dnf install -y --enablerepo prestaconcept-externals wkhtmltox liberation*fonts \
     && dnf install -y curl libcurl --allowerasing \
+    && dnf install -y jpegoptim optipng pngquant gifsicle libwebp-tools libavif-tools \
     && dnf clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime

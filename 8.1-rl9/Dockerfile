@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9.6
+FROM rockylinux/rockylinux:9.7
 
 LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
@@ -67,6 +67,7 @@ RUN dnf install -y make git bash-completion openssh-clients patch unzip p7zip p7
     && dnf config-manager --add-repo https://rpm.prestaconcept.net/externals/presta-rhel-externals.repo \
     && dnf install -y --enablerepo prestaconcept-externals wkhtmltox liberation*fonts \
     && dnf install -y curl libcurl --allowerasing \
+    && dnf install -y jpegoptim optipng pngquant gifsicle libwebp-tools libavif-tools \
     && dnf clean all
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
