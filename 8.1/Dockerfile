@@ -2,11 +2,11 @@ FROM centos:7
 
 LABEL org.opencontainers.image.authors="Didier BONNEFOI <dbonnefoi@prestaconcept.net>"
 
-ARG PHP_VER=8.1.33
+ARG PHP_VER=8.1.34
 ENV ACCEPT_EULA=Y
 
 RUN sed -i -e 's|\(^mirrorlist*\)|#\1|'  -e 's|^#\(baseurl*\)|\1|' -e 's|mirror.centos.org|vault.centos.org|' /etc/yum.repos.d/CentOS-Base.repo \
-    & yum clean metadata && yum -y update \
+    && yum clean metadata && yum -y update \
     && yum install -y yum-utils \
     && yum install -y https://rpm.prestaconcept.net/prestaconcept/RHEL7/presta-release-latest-7.rpm \
     && yum-config-manager --enable prestaconcept \
@@ -57,7 +57,7 @@ RUN yum -y install php-pecl-apcu \
     php-pecl-mailparse \
     php-pecl-memcached \
     php-pecl-maxminddb \
-    php-pecl-mongodb \
+    php-pecl-mongodb2 \
     php-pecl-pcov \
     php-pecl-redis \
     php-pecl-sqlsrv \

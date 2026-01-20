@@ -53,7 +53,7 @@ RUN dnf install -y php-pecl-apcu \
     php-pecl-mailparse \
     php-pecl-memcached \
     php-pecl-maxminddb \
-    php-pecl-mongodb \
+    php-pecl-mongodb2 \
     php-pecl-pcov \
     php-pecl-redis \
 #    php-sqlsrv \
