@@ -36,6 +36,7 @@ RUN dnf install -y \
     php-process \
     php-pdo \
     php-pdo-dblib \
+    php-pdo-firebird \
     php-pgsql \
     php-pspell \
     php-snmp \
