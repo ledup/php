@@ -57,7 +57,7 @@ RUN dnf install -y php-pecl-apcu \
     php-pecl-mongodb2 \
     php-pecl-pcov \
     php-pecl-redis \
-#    php-sqlsrv \
+    php-sqlsrv \
     php-pecl-ssh2 \
     php-pecl-xdebug \
     php-pecl-zip
