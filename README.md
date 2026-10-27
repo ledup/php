@@ -26,10 +26,14 @@ Docker image for php-fpm made to use with led.
 | **7.4-rl9** | PHP 7.4.33  |
 | **8.0-rl9** | PHP 8.0.30  |
 | **8.1-rl9** | PHP 8.1.34  |
-| **8.2-rl9** | PHP 8.2.34  |
-| **8.3-rl9** | PHP 8.3.35  |
-| **8.4-rl9** | PHP 8.4.26  |
-| **8.5-rl9** | PHP 8.5.11  |
+| **8.2-rl9** | PHP 8.2.35  |
+| **8.3-rl9** | PHP 8.3.36  |
+| **8.4-rl9** | PHP 8.4.27  |
+| **8.5-rl9** | PHP 8.5.12  |
+
+**notes**
+- PHP packages from Remi release
+- PHP releases below 8.2 with latest CVE-2026-109618 / CVE-2026-109619 + state corruption mitigation
 
 ## Includes
 
