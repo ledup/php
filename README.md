@@ -26,14 +26,15 @@ Docker image for php-fpm made to use with led.
 | **7.4-rl9** | PHP 7.4.33  |
 | **8.0-rl9** | PHP 8.0.30  |
 | **8.1-rl9** | PHP 8.1.34  |
-| **8.2-rl9** | PHP 8.2.35  |
-| **8.3-rl9** | PHP 8.3.36  |
-| **8.4-rl9** | PHP 8.4.27  |
-| **8.5-rl9** | PHP 8.5.12  |
+| **8.2-rl9** | PHP 8.2.36  |
+| **8.3-rl9** | PHP 8.3.37  |
+| **8.4-rl9** | PHP 8.4.28  |
+| **8.5-rl9** | PHP 8.5.13  |
 
 **notes**
 - PHP packages from Remi release
-- PHP releases below 8.2 with latest CVE-2026-109618 / CVE-2026-109619 + state corruption mitigation
+- PHP releases below 8.2 with security fixes backported by Remi (Nov 2026: CVE fixes of PHP 8.2.36 / 8.3.37)
+- on these releases, `session.upload_progress.enabled` is off by default (CVE-2026-115560 mitigation)
 
 ## Includes
 
