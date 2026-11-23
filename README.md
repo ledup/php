@@ -30,11 +30,13 @@ Docker image for php-fpm made to use with led.
 | **8.3-rl9** | PHP 8.3.37  |
 | **8.4-rl9** | PHP 8.4.28  |
 | **8.5-rl9** | PHP 8.5.13  |
+| **8.6-rl9** | PHP 8.6.0   |
 
 **notes**
 - PHP packages from Remi release
 - PHP releases below 8.2 with security fixes backported by Remi (Nov 2026: CVE fixes of PHP 8.2.36 / 8.3.37)
 - on these releases, `session.upload_progress.enabled` is off by default (CVE-2026-115560 mitigation)
+- 8.6-rl9: no imap extension (PECL imap not yet available for PHP 8.6), Xdebug 3.6.0alpha1
 
 ## Includes
 
